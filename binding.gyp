@@ -16,8 +16,11 @@
       "<!(node -e \"require('nan')\")"
     ],
     "xcode_settings": {
-      "OTHER_CPLUSPLUSFLAGS": ["-std=c++11", "-stdlib=libc++", "-mmacosx-version-min=10.8"],
-      "OTHER_LDFLAGS": ["-framework CoreFoundation -framework IOKit -framework AppKit"]
+      "OTHER_CPLUSPLUSFLAGS": ["-std=c++17", "-stdlib=libc++", "-mmacosx-version-min=10.14"],
+      "OTHER_LDFLAGS": ["-framework CoreFoundation -framework IOKit -framework AppKit"],
+      "GCC_ENABLE_CPP_EXCEPTIONS": "YES",
+      "CLANG_CXX_LIBRARY": "libc++",
+      "MACOSX_DEPLOYMENT_TARGET": "10.14"
     }
   }]
 }

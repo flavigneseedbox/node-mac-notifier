@@ -1,7 +1,7 @@
 "use strict";
 
-const v4 = require('uuid/v4');
-const EventTarget = require('event-target-shim');
+const { v4 } = require('uuid');
+const { EventTarget } = require('event-target-shim');
 const MacNotification = require('bindings')('Notification').MacNotification
 const notifications = [];
 
