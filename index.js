@@ -62,3 +62,38 @@ module.exports = class Notification extends EventTarget {
       item.notification.id === id;
   }
 };
+
+// Export helper functions for easier API usage
+module.exports.sendNotification = function(options) {
+  const { title, subtitle, body, ...rest } = options;
+  const notification = new module.exports(title || 'Notification', {
+    subtitle,
+    body,
+    ...rest
+  });
+  return notification;
+};
+
+module.exports.removeDeliveredNotifications = function(ids) {
+  if (!Array.isArray(ids)) {
+    ids = [ids];
+  }
+
+  ids.forEach(id => {
+    const notification = notifications.find(n =>
+      n.notification && n.notification.id === id
+    );
+    if (notification) {
+      notification.close();
+    }
+  });
+};
+
+module.exports.removeAllDeliveredNotifications = function() {
+  // Close all notifications
+  notifications.slice().forEach(notification => {
+    if (notification && notification.close) {
+      notification.close();
+    }
+  });
+};
